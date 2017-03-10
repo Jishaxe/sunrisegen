@@ -54,7 +54,7 @@ x = canvas.width / 2
 y = canvas.height - 150 + offset
 
 startRadius = radius
-radius *= 3
+radius *= 2.3
 ctx.globalAlpha = 0
 while (radius > startRadius) {
   ctx.beginPath()
@@ -66,6 +66,7 @@ while (radius > startRadius) {
 
 ctx.beginPath()
 ctx.globalAlpha = 1
+ctx.fillStyle = "white"
 ctx.arc(x, y, startRadius, 0, 2 * Math.PI, false)
 ctx.fill()
 ctx.closePath()
