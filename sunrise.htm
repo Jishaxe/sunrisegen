@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body style="margin: 0;">
+<canvas width=800 height=480 id="canvas"></canvas>
+</body>
+
+<script>
+sunColours = ['#FFDC81', '#FDE6B3', '#FECD78', '#fff8ed']
+backgroundColors = [
+  ['#ECD078', '#D95B43', '#C02942', '#542437', '#C02942'],
+  ['#734C7B', '#7E507C', '#EA8E77', '#F9784A', '#E45B38'],
+  ['#323F85', '#8A83C9', '#AC687D', '#FD4918', '#FDA800'],
+  ['#4C2656', '#8E1E52', '#9F132E', '#E60E1D', '#C1040A']
+]
+pickRnd = function (arr) {
+  return arr[Math.floor(rnd(0, arr.length))]
+}
+
+rnd = function (min, max) {
+  return Math.random() * (max - min) + min
+}
+
+var canvas = document.getElementById("canvas")
+ctx = canvas.getContext("2d")
+
+radius = rnd(100, 200)
+offset = rnd(0, 100)
+
+chosenBackground = pickRnd(backgroundColors)
+
+ctx.beginPath()
+gradient = ctx.createLinearGradient(0, 0, 0, canvas.height)
+gradient.addColorStop(0, chosenBackground[0])
+gradient.addColorStop(rnd(0.1, 0.3), chosenBackground[1])
+gradient.addColorStop(rnd(0.4, 0.6), chosenBackground[2])
+gradient.addColorStop(rnd(0.7, 0.9), chosenBackground[3])
+gradient.addColorStop(1, chosenBackground[4])
+
+
+
+ctx.fillStyle = gradient;
+ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+sunGradient = ctx.createLinearGradient(0, 200, 0, 200 + (radius * 2))
+
+sunGradient.addColorStop(0, pickRnd(sunColours))
+sunGradient.addColorStop(1, pickRnd(sunColours))
+
+ctx.fillStyle = sunGradient
+ctx.globalAlpha = 1
+
+x = canvas.width / 2
+y = canvas.height - 150 + offset
+
+startRadius = radius
+radius *= 3
+ctx.globalAlpha = 0
+while (radius > startRadius) {
+  ctx.beginPath()
+  ctx.arc(x, y, radius -= 2, 0, 2 * Math.PI, false)
+  ctx.fill()
+  ctx.globalAlpha += 0.0005
+  ctx.closePath()
+}
+
+ctx.beginPath()
+ctx.globalAlpha = 1
+ctx.arc(x, y, startRadius, 0, 2 * Math.PI, false)
+ctx.fill()
+ctx.closePath()
+
+
+</script>
+</html>

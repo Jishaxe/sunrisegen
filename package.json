@@ -1,0 +1,29 @@
+{
+  "name": "sunrisegen",
+  "version": "1.0.0",
+  "description": "Controls the @sunrisegen bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "echo sunrisebot is scheduler only atm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jishaxe/sunrisegen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jishaxe/sunrisegen/issues"
+  },
+  "homepage": "https://github.com/Jishaxe/sunrisegen#readme",
+  "dependencies": {
+    "coffeescript": "^1.12.4",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "phantomjs-prebuilt": "^2.1.14",
+    "randomstring": "^1.1.5",
+    "twitter": "^1.7.0",
+    "wait-on": "^2.0.2"
+  }
+}
